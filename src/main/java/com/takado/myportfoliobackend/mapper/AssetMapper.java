@@ -1,4 +1,4 @@
-package com.takado.myportfoliobackend.controller;
+package com.takado.myportfoliobackend.mapper;
 
 import com.takado.myportfoliobackend.domain.Asset;
 import com.takado.myportfoliobackend.domain.AssetDto;

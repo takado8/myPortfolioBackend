@@ -1,6 +1,8 @@
 package com.takado.myportfoliobackend.controller;
 
 import com.takado.myportfoliobackend.domain.AssetDto;
+import com.takado.myportfoliobackend.mapper.AssetMapper;
+import com.takado.myportfoliobackend.service.AssetDbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,22 +13,26 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class AssetController {
+    private final AssetDbService dbService;
+    private final AssetMapper mapper;
 
     @GetMapping("")
     public List<AssetDto> getAssets() {
-        return List.of(new AssetDto("ADA", "1000", "300"),
-                new AssetDto("BTC", "0.1", "1000"),
-                new AssetDto("ETH", "2", "2000"));
+        return mapper.mapToDto(dbService.getAllAssets());
     }
 
-    @PostMapping(value = "")
+    @PostMapping("")
     public AssetDto createAsset(@RequestBody AssetDto assetDto) {
-        System.out.println(assetDto);
-        return assetDto;
+        return mapper.mapToDto(dbService.saveAsset(mapper.mapToAsset(assetDto)));
+    }
+
+    @PutMapping("")
+    public AssetDto updateAsset(@RequestBody AssetDto assetDto) {
+        return mapper.mapToDto(dbService.updateAsset(assetDto));
     }
 
     @DeleteMapping("/{id}")
     public void deleteAsset(@PathVariable Long id) {
-        System.out.println("\nDeleting of " + id + " requested\n");
+        dbService.deleteAsset(id);
     }
 }
