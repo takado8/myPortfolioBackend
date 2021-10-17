@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">3</div>
+<div class="counter">1</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.125s</div>
+<div class="counter">0.702s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,17 +79,7 @@
 </thead>
 <tr>
 <td class="success">testGetCoinsPrices()</td>
-<td class="success">0.274s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testGetPrice()</td>
-<td class="success">0.623s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testPing()</td>
-<td class="success">0.228s</td>
+<td class="success">0.702s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -97,27 +87,22 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>04:28:51.580 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-04:28:51.594 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-04:28:51.637 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-04:28:51.650 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest], using SpringBootContextLoader
-04:28:51.655 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]: class path resource [com/takado/myportfoliobackend/client/CoinGeckoClientTest-context.xml] does not exist
-04:28:51.656 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]: class path resource [com/takado/myportfoliobackend/client/CoinGeckoClientTestContext.groovy] does not exist
-04:28:51.656 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-04:28:51.657 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]: CoinGeckoClientTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-04:28:51.706 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]
-04:28:51.773 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\korne\Desktop\myPortfolioBackend\build\classes\java\main\com\takado\myportfoliobackend\MyPortfolioBackendApplication.class]
-04:28:51.774 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.takado.myportfoliobackend.MyPortfolioBackendApplication for test class com.takado.myportfoliobackend.client.CoinGeckoClientTest
-04:28:51.877 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]: using defaults.
-04:28:51.878 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-04:28:51.905 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6c451c9c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@31c269fd, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@372b0d86, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@47747fb9, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3113a37, org.springframework.test.context.support.DirtiesContextTestExecutionListener@213e3629, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4e9658b5, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2a7b6f69, org.springframework.test.context.event.EventPublishingTestExecutionListener@20312893, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@70eecdc2, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@c41709a, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7db0565c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@54ec8cc9, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@52eacb4b, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5528a42c]
-04:28:51.909 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@22680f52 testClass = CoinGeckoClientTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@60d84f61 testClass = CoinGeckoClientTest, locations = '{}', classes = '{class com.takado.myportfoliobackend.MyPortfolioBackendApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@5bd82fed, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@6f0b0a5e, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@478ee483, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@58fe0499, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40cb698e, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@b86de0d], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
-
-
-
-starting tests:
-
-04:28:51.960 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+<pre>20:42:51.984 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+20:42:51.996 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+20:42:52.031 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+20:42:52.042 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest], using SpringBootContextLoader
+20:42:52.047 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]: class path resource [com/takado/myportfoliobackend/client/CoinGeckoClientTest-context.xml] does not exist
+20:42:52.048 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]: class path resource [com/takado/myportfoliobackend/client/CoinGeckoClientTestContext.groovy] does not exist
+20:42:52.048 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+20:42:52.049 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]: CoinGeckoClientTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:42:52.094 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]
+20:42:52.175 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\korne\Desktop\myPortfolioBackend\build\classes\java\main\com\takado\myportfoliobackend\MyPortfolioBackendApplication.class]
+20:42:52.176 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.takado.myportfoliobackend.MyPortfolioBackendApplication for test class com.takado.myportfoliobackend.client.CoinGeckoClientTest
+20:42:52.295 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.takado.myportfoliobackend.client.CoinGeckoClientTest]: using defaults.
+20:42:52.295 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+20:42:52.314 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2c444798, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1af7f54a, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6ebd78d1, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@436390f4, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4d157787, org.springframework.test.context.support.DirtiesContextTestExecutionListener@68ed96ca, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6d1310f6, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3228d990, org.springframework.test.context.event.EventPublishingTestExecutionListener@54e7391d, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@50b8ae8d, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@255990cc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@51c929ae, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3c8bdd5b, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@29d2d081, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@40e4ea87]
+20:42:52.319 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@1dfd5f51 testClass = CoinGeckoClientTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@3c321bdb testClass = CoinGeckoClientTest, locations = '{}', classes = '{class com.takado.myportfoliobackend.MyPortfolioBackendApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@788fcafb, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@72cf2de5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@53812a9b, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@422c3c7a, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@502f1f4c, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@b86de0d], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+20:42:52.356 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -127,36 +112,32 @@ starting tests:
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.5.5)
 
-2021-10-17 04:28:52.265  INFO 7876 --- [    Test worker] c.t.m.client.CoinGeckoClientTest         : Starting CoinGeckoClientTest using Java 11.0.10 on LAPTOP-LF601L0C with PID 7876 (started by korne in C:\Users\korne\Desktop\myPortfolioBackend)
-2021-10-17 04:28:52.269  INFO 7876 --- [    Test worker] c.t.m.client.CoinGeckoClientTest         : No active profile set, falling back to default profiles: default
-2021-10-17 04:28:53.124  INFO 7876 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-10-17 04:28:53.127  INFO 7876 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2021-10-17 04:28:53.161  INFO 7876 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.takado.myportfoliobackend.repository.AssetRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2021-10-17 04:28:53.162  INFO 7876 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 0 JDBC repository interfaces.
-2021-10-17 04:28:53.175  INFO 7876 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-10-17 04:28:53.178  INFO 7876 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-10-17 04:28:53.216  INFO 7876 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 1 JPA repository interfaces.
-2021-10-17 04:28:53.845  INFO 7876 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-10-17 04:28:53.966  INFO 7876 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
-2021-10-17 04:28:54.155  INFO 7876 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-10-17 04:28:54.315  INFO 7876 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2021-10-17 04:28:54.522  INFO 7876 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2021-10-17 04:28:54.540  INFO 7876 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
-2021-10-17 04:28:55.293  INFO 7876 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-10-17 04:28:55.303  INFO 7876 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-10-17 04:28:55.942  WARN 7876 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-10-17 04:28:56.751  INFO 7876 --- [    Test worker] c.t.m.client.CoinGeckoClientTest         : Started CoinGeckoClientTest in 4.782 seconds (JVM running for 6.187)
-
-testGetPrice result: 2.18
-
-testPing result: [gecko_says=(V3) To the Moon!]
+2021-10-17 20:42:52.672  INFO 8072 --- [    Test worker] c.t.m.client.CoinGeckoClientTest         : Starting CoinGeckoClientTest using Java 11.0.10 on LAPTOP-LF601L0C with PID 8072 (started by korne in C:\Users\korne\Desktop\myPortfolioBackend)
+2021-10-17 20:42:52.677  INFO 8072 --- [    Test worker] c.t.m.client.CoinGeckoClientTest         : No active profile set, falling back to default profiles: default
+2021-10-17 20:42:53.604  INFO 8072 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-10-17 20:42:53.607  INFO 8072 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2021-10-17 20:42:53.639  INFO 8072 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.takado.myportfoliobackend.repository.AssetRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2021-10-17 20:42:53.640  INFO 8072 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 0 JDBC repository interfaces.
+2021-10-17 20:42:53.650  INFO 8072 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-10-17 20:42:53.652  INFO 8072 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-10-17 20:42:53.681  INFO 8072 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 1 JPA repository interfaces.
+2021-10-17 20:42:54.294  INFO 8072 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-17 20:42:54.361  INFO 8072 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-17 20:42:54.539  INFO 8072 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-17 20:42:54.684  INFO 8072 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-10-17 20:42:54.873  INFO 8072 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-10-17 20:42:54.890  INFO 8072 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2021-10-17 20:42:55.611  INFO 8072 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-17 20:42:55.621  INFO 8072 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-10-17 20:42:56.284  WARN 8072 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-10-17 20:42:57.087  INFO 8072 --- [    Test worker] c.t.m.client.CoinGeckoClientTest         : Started CoinGeckoClientTest in 4.724 seconds (JVM running for 6.24)
 
 testGetCoinsPrices result: 
-{cardano=8.59, bitcoin=240898.0}
+{cardano={pln=8.53}, bitcoin={pln=240507}}
 
 
+end test.
 
-end tests.
 
 </pre>
 </span>
@@ -169,7 +150,7 @@ end tests.
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.2</a> at 17 paź 2021, 04:28:57</p>
+<a href="http://www.gradle.org">Gradle 7.2</a> at 17 paź 2021, 20:42:57</p>
 </div>
 </div>
 </body>
