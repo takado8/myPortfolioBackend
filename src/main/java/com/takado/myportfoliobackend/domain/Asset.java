@@ -20,6 +20,10 @@ public class Asset {
     private Long id;
 
     @NotNull
+    @Column(name = "coinId")
+    private String coinId;
+
+    @NotNull
     @Column(name = "ticker")
     private String ticker;
 
@@ -29,7 +33,8 @@ public class Asset {
     @Column(name = "valueIn")
     private String valueIn;
 
-    public Asset(String ticker, String amount, String valueIn) {
+    public Asset(String coinId, String ticker, String amount, String valueIn) {
+        this.coinId = coinId;
         this.ticker = ticker;
         this.amount = amount;
         this.valueIn = valueIn;

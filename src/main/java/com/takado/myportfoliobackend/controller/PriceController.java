@@ -26,4 +26,8 @@ public class PriceController {
         return priceService.getCoinsPrices(vs_currency, coinsIds);
     }
 
+    @GetMapping("/exchangeRate")
+    public BigDecimal getExchangeRate() {
+        return priceService.getExchangeRate();
+    }
 }
