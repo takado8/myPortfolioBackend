@@ -32,5 +32,4 @@ public class AssetDbService {
         fromDb.setValueIn(assetDto.getValueIn());
         return repository.save(fromDb);
     }
-
 }
