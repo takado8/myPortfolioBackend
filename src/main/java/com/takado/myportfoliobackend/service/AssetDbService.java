@@ -26,7 +26,7 @@ public class AssetDbService {
     }
 
     public Asset updateAsset(AssetDto assetDto) {
-        Asset fromDb = repository.findById(assetDto.getId()).orElseThrow( () ->
+        Asset fromDb = repository.findById(assetDto.getId()).orElseThrow(() ->
                 new RuntimeException("asset with id: " + assetDto.getId() + " does not exist"));
         fromDb.setAmount(assetDto.getAmount());
         fromDb.setValueIn(assetDto.getValueIn());

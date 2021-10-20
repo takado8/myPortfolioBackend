@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -26,4 +27,10 @@ public class Ticker {
     @Column(unique = true)
     private String coinId;
 
+    @OneToMany(
+            targetEntity = Asset.class,
+            mappedBy = "ticker",
+            cascade = CascadeType.MERGE,
+            fetch = FetchType.EAGER)
+    private List<Asset> assets;
 }

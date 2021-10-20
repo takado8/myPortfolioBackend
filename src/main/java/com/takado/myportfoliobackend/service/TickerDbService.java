@@ -16,6 +16,11 @@ public class TickerDbService {
         return tickerRepository.findAll();
     }
 
+    public Ticker getTicker(Long id) {
+        return tickerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cannot find ticker of id: " + id));
+    }
+
     public Ticker saveTicker(Ticker ticker) {
         return tickerRepository.save(ticker);
     }

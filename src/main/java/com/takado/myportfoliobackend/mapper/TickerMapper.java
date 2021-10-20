@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Service
 public class TickerMapper {
     public Ticker mapToTicker(TickerDto tickerDto) {
-        return new Ticker(tickerDto.getId(), tickerDto.getTicker(), tickerDto.getCoinId());
+        return new Ticker(tickerDto.getId(), tickerDto.getTicker(), tickerDto.getCoinId(), null);
     }
 
     public TickerDto mapToDto(Ticker ticker) {

@@ -1,5 +1,6 @@
 package com.takado.myportfoliobackend.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "assets")
 public class Asset {
     @Id
@@ -20,12 +22,9 @@ public class Asset {
     private Long id;
 
     @NotNull
-    @Column(name = "coinId")
-    private String coinId;
-
-    @NotNull
-    @Column(name = "ticker")
-    private String ticker;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "ticker_id")
+    private Ticker ticker;
 
     @Column(name = "amount")
     private String amount;
@@ -33,8 +32,7 @@ public class Asset {
     @Column(name = "valueIn")
     private String valueIn;
 
-    public Asset(String coinId, String ticker, String amount, String valueIn) {
-        this.coinId = coinId;
+    public Asset(Ticker ticker, String amount, String valueIn) {
         this.ticker = ticker;
         this.amount = amount;
         this.valueIn = valueIn;
