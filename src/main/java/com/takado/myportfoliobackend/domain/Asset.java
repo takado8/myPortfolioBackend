@@ -21,16 +21,20 @@ public class Asset {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "ticker_id")
-    private Ticker ticker;
-
     @Column(name = "amount")
     private String amount;
 
     @Column(name = "valueIn")
     private String valueIn;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "ticker_id")
+    private Ticker ticker;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Asset(Ticker ticker, String amount, String valueIn) {
         this.ticker = ticker;

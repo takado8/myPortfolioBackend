@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface AssetRepository extends CrudRepository<Asset, Long> {
     List<Asset> findAll();
+
+    List<Asset> findAllByUserId(Long userId);
 }

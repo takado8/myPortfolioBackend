@@ -13,6 +13,10 @@ import java.util.List;
 public class AssetDbService {
     private final AssetRepository repository;
 
+    public List<Asset> getAllAssetsByUserId(Long userId) {
+        return repository.findAllByUserId(userId);
+    }
+
     public List<Asset> getAllAssets() {
         return repository.findAll();
     }
