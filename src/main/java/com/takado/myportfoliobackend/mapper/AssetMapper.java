@@ -3,8 +3,9 @@ package com.takado.myportfoliobackend.mapper;
 import com.takado.myportfoliobackend.domain.Asset;
 import com.takado.myportfoliobackend.domain.AssetDto;
 import com.takado.myportfoliobackend.domain.Ticker;
-import com.takado.myportfoliobackend.domain.TickerDto;
+import com.takado.myportfoliobackend.domain.User;
 import com.takado.myportfoliobackend.service.TickerDbService;
+import com.takado.myportfoliobackend.service.UserDbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +16,17 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AssetMapper {
     private final TickerDbService tickerDbService;
+    private final UserDbService userDbService;
 
     public AssetDto mapToDto(Asset asset) {
-        return new AssetDto(asset.getId(), asset.getTicker().getId(), asset.getAmount(), asset.getValueIn());
+        return new AssetDto(asset.getId(), asset.getTicker().getId(),
+                asset.getUser().getId(), asset.getAmount(), asset.getValueIn());
     }
 
     public Asset mapToAsset(AssetDto assetDto) {
         Ticker ticker = tickerDbService.getTicker(assetDto.getTickerId());
-        return new Asset(ticker, assetDto.getAmount(), assetDto.getValueIn());
+        User user = userDbService.getUserById(assetDto.getUserId());
+        return new Asset(ticker, user, assetDto.getAmount(), assetDto.getValueIn());
     }
 
     public List<AssetDto> mapToDto(List<Asset> assets) {

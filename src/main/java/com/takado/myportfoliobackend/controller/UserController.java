@@ -23,9 +23,10 @@ public class UserController {
     }
 
     @GetMapping({"{email}"})
-    public Boolean userExists(@PathVariable String email) {
+    public UserDto getUser(@PathVariable String email) {
         User user = dbService.getUserByEmail(email);
-        return user != null;
+        return user != null ? mapper.mapToDto(user) : new UserDto(null, null,
+                null,null,null);
     }
 
     @PostMapping

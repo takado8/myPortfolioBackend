@@ -21,6 +21,11 @@ public class AssetController {
         return mapper.mapToDto(dbService.getAllAssets());
     }
 
+    @GetMapping("{userId}")
+    public List<AssetDto> getAssets(@PathVariable Long userId) {
+        return mapper.mapToDto(dbService.getAllAssetsByUserId(userId));
+    }
+
     @PostMapping("")
     public AssetDto createAsset(@RequestBody AssetDto assetDto) {
         return mapper.mapToDto(dbService.saveAsset(mapper.mapToAsset(assetDto)));
@@ -31,7 +36,7 @@ public class AssetController {
         return mapper.mapToDto(dbService.updateAsset(assetDto));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public void deleteAsset(@PathVariable Long id) {
         dbService.deleteAsset(id);
     }

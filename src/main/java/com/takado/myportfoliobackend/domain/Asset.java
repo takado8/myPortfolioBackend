@@ -36,9 +36,10 @@ public class Asset {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Asset(Ticker ticker, String amount, String valueIn) {
+    public Asset(Ticker ticker, User user, String amount, String valueIn) {
         this.ticker = ticker;
         this.amount = amount;
         this.valueIn = valueIn;
+        this.user = user;
     }
 }
