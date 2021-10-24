@@ -1,5 +1,6 @@
 package com.takado.myportfoliobackend.controller;
 
+import com.takado.myportfoliobackend.domain.AccessTokenService;
 import com.takado.myportfoliobackend.domain.TickerDto;
 import com.takado.myportfoliobackend.mapper.TickerMapper;
 import com.takado.myportfoliobackend.service.TickerDbService;
@@ -14,6 +15,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class TickerController {
+    private final AccessTokenService accessTokenService;
     private final TickerDbService dbService;
     private final TickerMapper mapper;
 
@@ -22,13 +24,19 @@ public class TickerController {
         return mapper.mapToDtoList(dbService.getAllTickers());
     }
 
-    @PostMapping("/{ticker}/{coinId}")
-    public TickerDto createTicker(@PathVariable @NotNull String ticker, @PathVariable @NotNull String coinId) {
-        return mapper.mapToDto(dbService.saveTicker(mapper.mapToTicker(new TickerDto(null, ticker, coinId))));
+    @PostMapping("/{accessToken}/{ticker}/{coinId}")
+    public TickerDto createTicker(@PathVariable @NotNull String accessToken,
+                                  @PathVariable @NotNull String ticker, @PathVariable @NotNull String coinId) {
+        if (accessTokenService.verifyAccessToken(accessToken)) {
+            return mapper.mapToDto(dbService.saveTicker(mapper.mapToTicker(new TickerDto(null, ticker, coinId))));
+        }
+        return new TickerDto(null, null, null);
     }
 
-    @DeleteMapping("{id}")
-    public void deleteTicker(@PathVariable @NotNull Long id){
-        dbService.deleteTicker(id);
+    @DeleteMapping("/{accessToken}/{id}")
+    public void deleteTicker(@PathVariable @NotNull String accessToken, @PathVariable @NotNull Long id) {
+        if (accessTokenService.verifyAccessToken(accessToken)) {
+            dbService.deleteTicker(id);
+        }
     }
 }
