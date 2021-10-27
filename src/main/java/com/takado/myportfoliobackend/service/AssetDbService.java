@@ -4,6 +4,7 @@ import com.takado.myportfoliobackend.domain.Asset;
 import com.takado.myportfoliobackend.domain.AssetDto;
 import com.takado.myportfoliobackend.repository.AssetRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +36,10 @@ public class AssetDbService {
         fromDb.setAmount(assetDto.getAmount());
         fromDb.setValueIn(assetDto.getValueIn());
         return repository.save(fromDb);
+    }
+
+    @Nullable
+    public Asset getAsset(Long id) {
+        return repository.findById(id).orElse(null);
     }
 }

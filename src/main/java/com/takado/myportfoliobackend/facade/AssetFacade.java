@@ -6,24 +6,32 @@ import com.takado.myportfoliobackend.domain.requests.AssetBodyRequest;
 import com.takado.myportfoliobackend.mapper.AssetMapper;
 import com.takado.myportfoliobackend.service.AssetDbService;
 import com.takado.myportfoliobackend.service.RequestSignatureService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
 
-@RequiredArgsConstructor
 @Component
 public class AssetFacade {
     private final String apiPath = "http://localhost:8081/v1/assets";
     private final AssetDbService dbService;
     private final AssetMapper mapper;
-    private final RequestSignatureService signatureService;
+    private RequestSignatureService signatureService;
 
-    // todo: remove this endpoint.
+    public AssetFacade(AssetDbService dbService, AssetMapper mapper, RequestSignatureService signatureService) {
+        this.dbService = dbService;
+        this.mapper = mapper;
+        this.signatureService = signatureService;
+    }
+
+    // todo: secure this endpoint.
     public List<AssetDto> getAssets() {
         return mapper.mapToDto(dbService.getAllAssets());
+    }
+
+    public String ping(){
+        return "pong";
     }
 
     public List<AssetDto> getAssets(Long userId, DigitalSignature digitalSignature) throws GeneralSecurityException {
@@ -92,5 +100,14 @@ public class AssetFacade {
             System.out.println("Object different from signed.\nObject: " + receivedDataPath
                     + "\nsigned: " + signedPath);
         }
+    }
+
+    public AssetDto getAsset(Long id) {
+        var asset = dbService.getAsset(id);
+        return asset == null ? null : mapper.mapToDto(asset);
+    }
+
+    public void setSignatureService(RequestSignatureService signatureService) {
+        this.signatureService = signatureService;
     }
 }

@@ -19,6 +19,11 @@ public class TickerController {
     private final TickerDbService dbService;
     private final TickerMapper mapper;
 
+    @PostMapping("/ping")
+    public String ping(){
+        return "pong";
+    }
+
     @GetMapping("")
     public List<TickerDto> getAllTickers() {
         return mapper.mapToDtoList(dbService.getAllTickers());

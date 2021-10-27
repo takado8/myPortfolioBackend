@@ -34,10 +34,4 @@ public class AssetMapper {
                 .map(this::mapToDto)
                 .collect(Collectors.toList());
     }
-
-    public List<Asset> mapToAsset(List<AssetDto> assetDtos) {
-        return assetDtos.stream()
-                .map(this::mapToAsset)
-                .collect(Collectors.toList());
-    }
 }

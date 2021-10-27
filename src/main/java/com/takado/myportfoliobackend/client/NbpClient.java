@@ -35,7 +35,7 @@ public class NbpClient {
                 price = ((Integer) value).doubleValue();
             }
             return BigDecimal.valueOf(price);
-        } catch (RestClientException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return BigDecimal.ONE;
         }

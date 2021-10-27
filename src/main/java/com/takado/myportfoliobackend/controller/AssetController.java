@@ -17,10 +17,21 @@ import java.util.List;
 public class AssetController {
     private final AssetFacade assetFacade;
 
-    // todo: remove this endpoint.
+    // todo: secure this endpoint.
     @GetMapping("")
     public List<AssetDto> getAssets() {
         return assetFacade.getAssets();
+    }
+
+    // todo: secure this endpoint
+    @GetMapping("{id}")
+    public AssetDto getAsset(@PathVariable Long id){
+        return assetFacade.getAsset(id);
+    }
+
+    @PostMapping("/ping")
+    public String ping(){
+        return assetFacade.ping();
     }
 
     @PostMapping("{userId}")

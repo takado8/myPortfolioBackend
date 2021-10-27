@@ -14,13 +14,19 @@ import java.security.GeneralSecurityException;
 import java.util.List;
 
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Component
 public class UserFacade {
     private final UserDbService dbService;
     private final UserMapper mapper;
-    private final RequestSignatureService signatureService;
+    private RequestSignatureService signatureService;
     private final String apiPath = "http://localhost:8081/v1/users";
+
+    public UserFacade(UserDbService dbService, UserMapper mapper, RequestSignatureService signatureService) {
+        this.dbService = dbService;
+        this.mapper = mapper;
+        this.signatureService = signatureService;
+    }
 
     // todo: remove this endpoint
     public List<UserDto> getAllUsers() {
@@ -78,4 +84,16 @@ public class UserFacade {
         }
     }
 
+    public String ping() {
+        return "pong";
+    }
+
+    public UserDto getUser(Long id) {
+        var user = dbService.getUserById(id);
+        return user == null ? null : mapper.mapToDto(user);
+    }
+
+    public void setSignatureService(RequestSignatureService signatureService) {
+        this.signatureService = signatureService;
+    }
 }
