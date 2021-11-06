@@ -1,5 +1,5 @@
 # myPortfolioBackend
- Web Crypto assets portfolio - keep track of your crypto investments.
+ Web crypto-assets portfolio - keep track of your crypto investments.
 
 * Uses OAuth2 with google account for authentication and user account creation.
 * Uses digital signatures to secure endpoint calls.
