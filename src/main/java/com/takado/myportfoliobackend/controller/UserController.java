@@ -1,7 +1,6 @@
 package com.takado.myportfoliobackend.controller;
 
 import com.takado.myportfoliobackend.domain.DigitalSignature;
-import com.takado.myportfoliobackend.domain.User;
 import com.takado.myportfoliobackend.domain.UserDto;
 import com.takado.myportfoliobackend.domain.requests.UserBodyRequest;
 import com.takado.myportfoliobackend.facade.UserFacade;
@@ -31,7 +30,7 @@ public class UserController {
 
     // todo: secure this endpoint
     @GetMapping("{id}")
-    public UserDto getUser(@PathVariable Long id){
+    public UserDto getUser(@PathVariable Long id) {
         return userFacade.getUser(id);
     }
 

@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class UserBodyRequest extends BodyRequest{
+public class UserBodyRequest extends BodyRequest {
     private UserDto userDto;
 
     public UserBodyRequest(DigitalSignature digitalSignature, UserDto userDto) {

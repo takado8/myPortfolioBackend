@@ -1,6 +1,6 @@
 package com.takado.myportfoliobackend.controller;
 
-import com.takado.myportfoliobackend.domain.AccessTokenService;
+import com.takado.myportfoliobackend.service.AccessTokenService;
 import com.takado.myportfoliobackend.domain.TickerDto;
 import com.takado.myportfoliobackend.mapper.TickerMapper;
 import com.takado.myportfoliobackend.service.TickerDbService;

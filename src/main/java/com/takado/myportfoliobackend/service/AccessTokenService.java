@@ -1,4 +1,4 @@
-package com.takado.myportfoliobackend.domain;
+package com.takado.myportfoliobackend.service;
 
 import org.springframework.stereotype.Service;
 
