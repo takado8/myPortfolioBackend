@@ -17,12 +17,6 @@ import java.util.List;
 public class UserController {
     private final UserFacade userFacade;
 
-    // todo: secure this endpoint
-    @GetMapping
-    public List<UserDto> getAllUsers() {
-        return userFacade.getAllUsers();
-    }
-
     @PostMapping("/ping")
     public String ping() {
         return userFacade.ping();

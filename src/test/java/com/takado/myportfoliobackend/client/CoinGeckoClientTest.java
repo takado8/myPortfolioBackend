@@ -26,10 +26,5 @@ public class CoinGeckoClientTest {
                 "pln", "cardano", "bitcoin");
         System.out.println("\ntestGetCoinsPrices result: \n" + result);
         assertNotNull(result);
-        System.out.println("\n\nend test.\n\n");
-    }
-
-    @Test
-    void scratchbook(){
     }
 }

@@ -58,15 +58,6 @@ class UserFacadeTest {
     }
 
     @Test
-    void getAllUsers() {
-        //when
-        var result = userFacade.getAllUsers();
-        //then
-        assertTrue(result.size() > 0);
-        assertTrue(result.contains(userInDb));
-    }
-
-    @Test
     void getUser() {
         var result = userFacade.getUser(userInDb.getId());
         assertNotNull(result);

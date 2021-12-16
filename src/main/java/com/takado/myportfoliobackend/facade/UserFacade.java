@@ -7,14 +7,11 @@ import com.takado.myportfoliobackend.domain.requests.UserBodyRequest;
 import com.takado.myportfoliobackend.mapper.UserMapper;
 import com.takado.myportfoliobackend.service.RequestSignatureService;
 import com.takado.myportfoliobackend.service.UserDbService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.security.GeneralSecurityException;
-import java.util.List;
 
 
-//@RequiredArgsConstructor
 @Component
 public class UserFacade {
     private final UserDbService dbService;
@@ -26,11 +23,6 @@ public class UserFacade {
         this.dbService = dbService;
         this.mapper = mapper;
         this.signatureService = signatureService;
-    }
-
-    // todo: remove this endpoint
-    public List<UserDto> getAllUsers() {
-        return mapper.mapToDtoList(dbService.getAllUsers());
     }
 
     public UserDto getUser(String email, DigitalSignature digitalSignature) throws GeneralSecurityException {
