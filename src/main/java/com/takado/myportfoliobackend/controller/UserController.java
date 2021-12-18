@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.GeneralSecurityException;
-import java.util.List;
 
 @RestController
 @RequestMapping("/v1/users")
@@ -25,12 +24,12 @@ public class UserController {
     // todo: secure this endpoint
     @GetMapping("{id}")
     public UserDto getUser(@PathVariable Long id) {
-        return userFacade.getUser(id);
+        return userFacade.getUserById(id);
     }
 
     @PostMapping({"{email}"})
     public UserDto getUser(@PathVariable String email, @RequestBody DigitalSignature digitalSignature) throws GeneralSecurityException {
-        return userFacade.getUser(email, digitalSignature);
+        return userFacade.getUserByEmail(email, digitalSignature);
     }
 
     @PostMapping

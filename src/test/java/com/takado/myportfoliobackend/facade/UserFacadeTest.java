@@ -30,68 +30,70 @@ class UserFacadeTest {
 
     @BeforeEach
     void beforeEach() throws GeneralSecurityException {
-        // given
         userFacade.setSignatureService(signatureService);
         UserDto userDto = new UserDto(1L, "mail", "123", "aa", Collections.emptyList());
         var signature = new DigitalSignature(new byte[1],
                 "UserDto(id=1, email=mail, nameHash=123, displayedName=aa, assetsId=[])");
         UserBodyRequest bodyRequest = new UserBodyRequest(signature, userDto);
         when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
-        //when
         userInDb = userFacade.createUser(bodyRequest);
     }
 
     @AfterEach
-    void afterEach() throws GeneralSecurityException {
+    void afterEach() {
         try {
-            // given
             var userInDbId = userInDb.getId();
-            userFacade.setSignatureService(signatureService);
-            var signature = new DigitalSignature(new byte[1],
-                    "http://localhost:8081/v1/users/delete/" + userInDbId);
-            when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
-            //when
-            userFacade.deleteUser(userInDbId, signature);
+            deleteUserById(userInDbId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
+    private void deleteUserById(Long userId) throws GeneralSecurityException {
+        var signature = new DigitalSignature(new byte[1],
+                "http://localhost:8081/v1/users/delete/" + userId);
+        when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
+
+        userFacade.deleteUser(userId, signature);
+    }
+
     @Test
-    void getUser() {
-        var result = userFacade.getUser(userInDb.getId());
+    void getUserById() {
+        //when
+        var result = userFacade.getUserById(userInDb.getId());
+        //then
         assertNotNull(result);
         assertEquals(userInDb, result);
     }
 
     @Test
     void createUser() throws GeneralSecurityException {
-        // given
-        userFacade.setSignatureService(signatureService);
-        UserDto userDto = new UserDto(1L, "mail22", "123", "aa", Collections.emptyList());
+        //given
+        UserDto userDto = new UserDto(5L, "mail2233", "123456", "aabb", Collections.emptyList());
         var signature = new DigitalSignature(new byte[1],
-                "UserDto(id=1, email=mail22, nameHash=123, displayedName=aa, assetsId=[])");
+                "UserDto(id=5, email=mail2233, nameHash=123456, displayedName=aabb, assetsId=[])");
         UserBodyRequest bodyRequest = new UserBodyRequest(signature, userDto);
         when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
         //when
         var result = userFacade.createUser(bodyRequest);
         //then
-        assertEquals(userDto, result);
+        assertEquals(userDto.getEmail(), result.getEmail());
+        //cleanup
+        deleteUserById(result.getId());
     }
 
     @Test
     void deleteUser() throws GeneralSecurityException {
-        // given
+        //given
         var userInDbId = userInDb.getId();
-        userFacade.setSignatureService(signatureService);
         var signature = new DigitalSignature(new byte[1],
                 "http://localhost:8081/v1/users/delete/" + userInDbId);
         when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
         //when
         userFacade.deleteUser(userInDbId, signature);
         //then
-        var assetShouldNotExist = userFacade.getUser(userInDbId);
-        assertNull(assetShouldNotExist);
+        var userShouldNotExist = userFacade.getUserById(userInDbId);
+        assertNull(userShouldNotExist);
     }
 
     @Test
@@ -103,13 +105,14 @@ class UserFacadeTest {
     }
 
     @Test
-    void testGetUser() throws GeneralSecurityException {
-        userFacade.setSignatureService(signatureService);
+    void testGetUserByEmail() throws GeneralSecurityException {
+        //given
         var signature = new DigitalSignature(new byte[1],
                 "http://localhost:8081/v1/users/mail");
         when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
-
-        var result = userFacade.getUser(userInDb.getEmail(), signature);
+        //when
+        var result = userFacade.getUserByEmail(userInDb.getEmail(), signature);
+        //then
         assertNotNull(result);
         assertEquals(userInDb, result);
     }

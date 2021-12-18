@@ -25,7 +25,7 @@ public class UserFacade {
         this.signatureService = signatureService;
     }
 
-    public UserDto getUser(String email, DigitalSignature digitalSignature) throws GeneralSecurityException {
+    public UserDto getUserByEmail(String email, DigitalSignature digitalSignature) throws GeneralSecurityException {
         String receivedDataPath = apiPath + "/" + email;
         String signedPath = digitalSignature.getMessage();
         if ((receivedDataPath).equals(signedPath)) {
@@ -49,8 +49,12 @@ public class UserFacade {
         String signatureAssetDtoString = digitalSignature.getMessage();
         if (userDtoString.equals(signatureAssetDtoString)) {
             if (signatureService.verifyDigitalSignature(digitalSignature)) {
-                return mapper.mapToDto(dbService.saveUser(mapper.mapToUser(userDto)));
-
+                User userFromDb = dbService.getUserByEmail(userDto.getEmail());
+                if (userFromDb == null) {
+                    return mapper.mapToDto(dbService.saveUser(mapper.mapToUser(userDto)));
+                } else {
+                    return mapper.mapToDto(userFromDb);
+                }
             } else {
                 System.out.println("Signature verification failed.");
             }
@@ -80,7 +84,7 @@ public class UserFacade {
         return "pong";
     }
 
-    public UserDto getUser(Long id) {
+    public UserDto getUserById(Long id) {
         var user = dbService.getUserById(id);
         return user == null ? null : mapper.mapToDto(user);
     }
