@@ -71,15 +71,6 @@ class AssetFacadeTest {
     }
 
     @Test
-    void getAssets() {
-        //when
-        var result = assetFacade.getAssets();
-        //then
-        assertTrue(result.size() > 0);
-        assertTrue(result.contains(assetInDb));
-    }
-
-    @Test
     void ping() {
         // when
         var result = assetFacade.ping();
@@ -114,7 +105,6 @@ class AssetFacadeTest {
         var result = assetFacade.updateAsset(bodyRequest);
         //then
         assertEquals(assetDto, result);
-
     }
 
     @Test
@@ -146,5 +136,4 @@ class AssetFacadeTest {
         var assetShouldNotExist = assetFacade.getAsset(assetInDbId);
         assertNull(assetShouldNotExist);
     }
-
 }

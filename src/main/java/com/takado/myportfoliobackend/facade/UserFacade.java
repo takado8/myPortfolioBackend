@@ -28,17 +28,10 @@ public class UserFacade {
     public UserDto getUserByEmail(String email, DigitalSignature digitalSignature) throws GeneralSecurityException {
         String receivedDataPath = apiPath + "/" + email;
         String signedPath = digitalSignature.getMessage();
-        if ((receivedDataPath).equals(signedPath)) {
-            if (signatureService.verifyDigitalSignature(digitalSignature)) {
+            if (signatureService.validateSignature(receivedDataPath, signedPath, digitalSignature)) {
                 User user = dbService.getUserByEmail(email);
                 if (user != null) return mapper.mapToDto(user);
-            } else {
-                System.out.println("Signature error in getUser.");
             }
-        } else {
-            System.out.println("Object different from signed.\nObject: " + receivedDataPath
-                    + "\nsigned: " + signedPath);
-        }
         return new UserDto(null, null, null, null, null);
     }
 
@@ -47,37 +40,23 @@ public class UserFacade {
         UserDto userDto = bodyRequest.getUserDto();
         String userDtoString = userDto.toString();
         String signatureAssetDtoString = digitalSignature.getMessage();
-        if (userDtoString.equals(signatureAssetDtoString)) {
-            if (signatureService.verifyDigitalSignature(digitalSignature)) {
+            if (signatureService.validateSignature(userDtoString, signatureAssetDtoString, digitalSignature)) {
                 User userFromDb = dbService.getUserByEmail(userDto.getEmail());
                 if (userFromDb == null) {
                     return mapper.mapToDto(dbService.saveUser(mapper.mapToUser(userDto)));
                 } else {
                     return mapper.mapToDto(userFromDb);
                 }
-            } else {
-                System.out.println("Signature verification failed.");
             }
-        } else {
-            System.out.println("Object different from signed.\nObject: " + userDtoString
-                    + "\nsigned: " + signatureAssetDtoString);
-        }
         return new UserDto(null, null, null, null, null);
     }
 
     public void deleteUser(Long id, DigitalSignature digitalSignature) throws GeneralSecurityException {
         String receivedDataPath = apiPath + "/delete/" + id;
         String signedPath = digitalSignature.getMessage();
-        if ((receivedDataPath).equals(signedPath)) {
-            if (signatureService.verifyDigitalSignature(digitalSignature)) {
+            if (signatureService.validateSignature(receivedDataPath, signedPath, digitalSignature)) {
                 dbService.deleteUser(id);
-            } else {
-                System.out.println("Signature error in getUser.");
             }
-        } else {
-            System.out.println("Object different from signed.\nObject: " + receivedDataPath
-                    + "\nsigned: " + signedPath);
-        }
     }
 
     public String ping() {

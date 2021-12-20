@@ -15,6 +15,20 @@ public class RequestSignatureService {
     private String publicKeyString;
     private PublicKey publicKey;
 
+    public boolean validateSignature(String expected, String signed, DigitalSignature signature) throws GeneralSecurityException {
+        if ((expected).equals(signed)) {
+            if (verifyDigitalSignature(signature)) {
+                return true;
+            } else {
+                System.out.println("Signature error.");
+            }
+        } else {
+            System.out.println("Object different from signed.\nObject: " + expected
+                    + "\nsigned: " + signed);
+        }
+        return false;
+    }
+
     public boolean verifyDigitalSignature(DigitalSignature digitalSignature) throws GeneralSecurityException {
         if (digitalSignature == null) return false;
         byte[] signatureBytes = digitalSignature.getSignature();

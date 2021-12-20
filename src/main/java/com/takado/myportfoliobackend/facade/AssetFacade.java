@@ -25,28 +25,15 @@ public class AssetFacade {
         this.signatureService = signatureService;
     }
 
-    // todo: secure this endpoint.
-    public List<AssetDto> getAssets() {
-        return mapper.mapToDto(dbService.getAllAssets());
-    }
-
-    public String ping(){
+    public String ping() {
         return "pong";
     }
 
     public List<AssetDto> getAssets(Long userId, DigitalSignature digitalSignature) throws GeneralSecurityException {
         String receivedDataPath = apiPath + "/" + userId;
         String signedPath = digitalSignature.getMessage();
-        if ((receivedDataPath).equals(signedPath)) {
-            if (signatureService.verifyDigitalSignature(digitalSignature)) {
-                return mapper.mapToDto(dbService.getAllAssetsByUserId(userId));
-            } else {
-                System.out.println("Signature error in getAssets.");
-                return Collections.emptyList();
-            }
-        } else {
-            System.out.println("Object different from signed.\nObject: " + receivedDataPath
-                    + "\nsigned: " + signedPath);
+        if (signatureService.validateSignature(receivedDataPath, signedPath, digitalSignature)) {
+            return mapper.mapToDto(dbService.getAllAssetsByUserId(userId));
         }
         return Collections.emptyList();
     }
@@ -56,15 +43,8 @@ public class AssetFacade {
         AssetDto assetDto = bodyRequest.getAssetDto();
         String assetDtoString = assetDto.toString();
         String signatureAssetDtoString = digitalSignature.getMessage();
-        if (assetDtoString.equals(signatureAssetDtoString)) {
-            if (signatureService.verifyDigitalSignature(digitalSignature)) {
-                return mapper.mapToDto(dbService.saveAsset(mapper.mapToAsset(assetDto)));
-            } else {
-                System.out.println("Signature verification failed.");
-            }
-        } else {
-            System.out.println("Object different from signed.\nObject: " + assetDtoString
-                    + "\nsigned: " + signatureAssetDtoString);
+        if (signatureService.validateSignature(assetDtoString, signatureAssetDtoString, digitalSignature)) {
+            return mapper.mapToDto(dbService.saveAsset(mapper.mapToAsset(assetDto)));
         }
         return new AssetDto(null, null, null, null, null);
     }
@@ -74,15 +54,8 @@ public class AssetFacade {
         AssetDto assetDto = bodyRequest.getAssetDto();
         String assetDtoString = assetDto.toString();
         String signatureAssetDtoString = digitalSignature.getMessage();
-        if (assetDtoString.equals(signatureAssetDtoString)) {
-            if (signatureService.verifyDigitalSignature(digitalSignature)) {
-                return mapper.mapToDto(dbService.updateAsset(assetDto));
-            } else {
-                System.out.println("Signature verification failed.");
-            }
-        } else {
-            System.out.println("Object different from signed.\nObject: " + assetDtoString
-                    + "\nsigned: " + signatureAssetDtoString);
+        if (signatureService.validateSignature(assetDtoString, signatureAssetDtoString, digitalSignature)) {
+            return mapper.mapToDto(dbService.updateAsset(assetDto));
         }
         return new AssetDto(null, null, null, null, null);
     }
@@ -90,16 +63,9 @@ public class AssetFacade {
     public void deleteAsset(Long id, DigitalSignature digitalSignature) throws GeneralSecurityException {
         String receivedDataPath = apiPath + "/delete/" + id;
         String signedPath = digitalSignature.getMessage();
-        if ((receivedDataPath).equals(signedPath)) {
-            if (signatureService.verifyDigitalSignature(digitalSignature)) {
+            if (signatureService.validateSignature(receivedDataPath, signedPath, digitalSignature)) {
                 dbService.deleteAsset(id);
-            } else {
-                System.out.println("Signature error in getAssets.");
             }
-        } else {
-            System.out.println("Object different from signed.\nObject: " + receivedDataPath
-                    + "\nsigned: " + signedPath);
-        }
     }
 
     public AssetDto getAsset(Long id) {

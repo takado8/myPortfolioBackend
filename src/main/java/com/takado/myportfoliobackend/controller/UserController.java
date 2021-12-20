@@ -21,12 +21,6 @@ public class UserController {
         return userFacade.ping();
     }
 
-    // todo: secure this endpoint
-    @GetMapping("{id}")
-    public UserDto getUser(@PathVariable Long id) {
-        return userFacade.getUserById(id);
-    }
-
     @PostMapping({"{email}"})
     public UserDto getUser(@PathVariable String email, @RequestBody DigitalSignature digitalSignature) throws GeneralSecurityException {
         return userFacade.getUserByEmail(email, digitalSignature);
