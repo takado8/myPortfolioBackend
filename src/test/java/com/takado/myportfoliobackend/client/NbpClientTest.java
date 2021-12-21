@@ -19,8 +19,5 @@ class NbpClientTest {
         var price = nbpClient.getExchangeRate();
         assertNotNull(price);
         assertTrue(price.compareTo(BigDecimal.ZERO) > 0);
-        System.out.println("\ngetting price...\n");
-        System.out.println(price);
-        System.out.println("\nend getting price");
     }
 }

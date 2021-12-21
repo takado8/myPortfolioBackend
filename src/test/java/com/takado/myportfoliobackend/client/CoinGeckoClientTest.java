@@ -13,18 +13,16 @@ public class CoinGeckoClientTest {
     CoinGeckoClient geckoClient;
 
     @Test
-    void testPing() {
+    void ping() {
         var result = geckoClient.ping();
-        System.out.println("\ntestPing result: " + result + "\n");
         assertNotNull(result);
         assertTrue(result.containsKey("gecko_says"));
     }
 
     @Test
-    void testGetCoinsPrices() {
+    void getCoinsPrices() {
         var result = geckoClient.getCoinsPrices(
                 "pln", "cardano", "bitcoin");
-        System.out.println("\ntestGetCoinsPrices result: \n" + result);
         assertNotNull(result);
     }
 }

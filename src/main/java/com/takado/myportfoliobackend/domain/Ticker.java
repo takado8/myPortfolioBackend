@@ -33,4 +33,13 @@ public class Ticker {
             cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER)
     private List<Asset> assets;
+
+    @Override
+    public String toString() {
+        return "Ticker{" +
+                "id=" + id +
+                ", ticker='" + ticker + '\'' +
+                ", coinId='" + coinId + '\'' +
+                '}';
+    }
 }

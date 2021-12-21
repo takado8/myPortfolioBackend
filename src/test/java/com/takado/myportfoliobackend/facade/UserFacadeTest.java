@@ -16,13 +16,13 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class UserFacadeTest {
     @Autowired
     UserFacade userFacade;
-
     @Mock
     RequestSignatureService signatureService;
 
@@ -32,10 +32,10 @@ class UserFacadeTest {
     void beforeEach() throws GeneralSecurityException {
         userFacade.setSignatureService(signatureService);
         UserDto userDto = new UserDto(1L, "mail", "123", "aa", Collections.emptyList());
-        var signature = new DigitalSignature(new byte[1],
-                "UserDto(id=1, email=mail, nameHash=123, displayedName=aa, assetsId=[])");
+        var signature = new DigitalSignature(new byte[1], "");
         UserBodyRequest bodyRequest = new UserBodyRequest(signature, userDto);
-        when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
+        when(signatureService.validateSignature(any(String.class), any(String.class), any(DigitalSignature.class)))
+                .thenReturn(true);
         userInDb = userFacade.createUser(bodyRequest);
     }
 
@@ -47,14 +47,6 @@ class UserFacadeTest {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    private void deleteUserById(Long userId) throws GeneralSecurityException {
-        var signature = new DigitalSignature(new byte[1],
-                "http://localhost:8081/v1/users/delete/" + userId);
-        when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
-
-        userFacade.deleteUser(userId, signature);
     }
 
     @Test
@@ -70,10 +62,8 @@ class UserFacadeTest {
     void createUser() throws GeneralSecurityException {
         //given
         UserDto userDto = new UserDto(5L, "mail2233", "123456", "aabb", Collections.emptyList());
-        var signature = new DigitalSignature(new byte[1],
-                "UserDto(id=5, email=mail2233, nameHash=123456, displayedName=aabb, assetsId=[])");
+        var signature = new DigitalSignature(new byte[1], "");
         UserBodyRequest bodyRequest = new UserBodyRequest(signature, userDto);
-        when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
         //when
         var result = userFacade.createUser(bodyRequest);
         //then
@@ -86,9 +76,7 @@ class UserFacadeTest {
     void deleteUser() throws GeneralSecurityException {
         //given
         var userInDbId = userInDb.getId();
-        var signature = new DigitalSignature(new byte[1],
-                "http://localhost:8081/v1/users/delete/" + userInDbId);
-        when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
+        var signature = new DigitalSignature(new byte[1], "");
         //when
         userFacade.deleteUser(userInDbId, signature);
         //then
@@ -105,15 +93,18 @@ class UserFacadeTest {
     }
 
     @Test
-    void testGetUserByEmail() throws GeneralSecurityException {
+    void getUserByEmail() throws GeneralSecurityException {
         //given
-        var signature = new DigitalSignature(new byte[1],
-                "http://localhost:8081/v1/users/mail");
-        when(signatureService.verifyDigitalSignature(signature)).thenReturn(true);
+        var signature = new DigitalSignature(new byte[1], "");
         //when
         var result = userFacade.getUserByEmail(userInDb.getEmail(), signature);
         //then
-        assertNotNull(result);
         assertEquals(userInDb, result);
     }
+
+    private void deleteUserById(Long userId) throws GeneralSecurityException {
+        var signature = new DigitalSignature(new byte[1], "");
+        userFacade.deleteUser(userId, signature);
+    }
+
 }
