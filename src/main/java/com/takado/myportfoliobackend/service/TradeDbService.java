@@ -16,11 +16,11 @@ public class TradeDbService {
     public List<Trade> getAllTrades() {
         return repository.findAll();
     }
-//
-//    public List<Trade> getAllTradesByUserId(Long id) {
-//        return repository.findAllByUserId(id);
-//    }
-//
+
+    public List<Trade> getAllTradesByUserIdAndTickerId(Long userIid, Long tickerId) {
+        return repository.findAllByUserIdAndTickerId(userIid, tickerId);
+    }
+
     public Trade saveTrade(Trade trade) {
         return repository.save(trade);
     }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TradeRepository extends CrudRepository<Trade, Long> {
     List<Trade> findAll();
-//    List<Trade> findAllByUserId(Long userId);
+    List<Trade> findAllByUserIdAndTickerId(Long userId, Long tickerId);
 }
