@@ -7,6 +7,7 @@ import com.takado.myportfoliobackend.service.AssetDbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +17,7 @@ public class UserMapper {
     private final AssetDbService assetDbService;
     public User mapToUser(UserDto userDto) {
         return new User(userDto.getId(), userDto.getEmail(), userDto.getNameHash(), userDto.getDisplayedName(),
-                assetDbService.getAllAssetsByUserId(userDto.getId()));
+                assetDbService.getAllAssetsByUserId(userDto.getId()), Collections.emptyList());
     }
 
     public UserDto mapToDto(User user) {

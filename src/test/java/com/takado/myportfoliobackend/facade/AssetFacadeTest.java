@@ -40,7 +40,8 @@ class AssetFacadeTest {
         if (tickersFromDb.size() > 0) {
             AssetFacadeTest.tickerId = tickersFromDb.get(0).getId();
         } else {
-            tickerDbService.saveTicker(new Ticker(1L, "BTC", "bitcoin", Collections.emptyList()));
+            tickerDbService.saveTicker(new Ticker(1L, "BTC", "bitcoin", Collections.emptyList(),
+                    Collections.emptyList()));
             var newTickerFromDb = tickerDbService.getAllTickers().get(0);
             if (newTickerFromDb == null) {
                 throw new NullPointerException("Cannot create new ticker for tests.");
@@ -53,7 +54,8 @@ class AssetFacadeTest {
         if (usersFromDb.size() > 0) {
             AssetFacadeTest.userId = usersFromDb.get(0).getId();
         } else {
-            userDbService.saveUser(new User(1L, "testEmail2323", "testHash12345", "testName123", Collections.emptyList()));
+            userDbService.saveUser(new User(1L, "testEmail2323", "testHash12345", "testName123",
+                    Collections.emptyList(), Collections.emptyList()));
             var newUserFromDb = userDbService.getAllUsers().get(0);
             if (newUserFromDb == null) {
                 throw new NullPointerException("Cannot create new user for tests.");

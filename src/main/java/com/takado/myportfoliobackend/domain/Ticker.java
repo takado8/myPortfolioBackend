@@ -34,6 +34,13 @@ public class Ticker {
             fetch = FetchType.EAGER)
     private List<Asset> assets;
 
+    @OneToMany(
+            targetEntity = Trade.class,
+            mappedBy = "ticker",
+            cascade = CascadeType.MERGE,
+            fetch = FetchType.LAZY)
+    private List<Trade> trades;
+
     @Override
     public String toString() {
         return "Ticker{" +

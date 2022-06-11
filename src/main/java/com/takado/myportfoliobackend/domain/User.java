@@ -35,4 +35,11 @@ public class User {
             cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER)
     private List<Asset> assets;
+
+    @OneToMany(
+            targetEntity = Trade.class,
+            mappedBy = "user",
+            cascade = CascadeType.MERGE,
+            fetch = FetchType.LAZY)
+    private List<Trade> trades;
 }
