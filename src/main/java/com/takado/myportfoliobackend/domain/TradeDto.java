@@ -1,0 +1,31 @@
+package com.takado.myportfoliobackend.domain;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Getter
+@RequiredArgsConstructor
+public class TradeDto {
+    private final Long id;
+    private final String amount;
+    private final String valueIn;
+    private final Trade.Type type;
+    private final LocalDateTime dateTime;
+    private final Long tickerId;
+    private final Long userId;
+
+    @Override
+    public String toString() {
+        return "TradeDto{" +
+                "id=" + id +
+                ", amount='" + amount + '\'' +
+                ", valueIn='" + valueIn + '\'' +
+                ", type=" + type +
+                ", dateTime=" + dateTime +
+                ", tickerId=" + tickerId +
+                ", userId=" + userId +
+                '}';
+    }
+}
