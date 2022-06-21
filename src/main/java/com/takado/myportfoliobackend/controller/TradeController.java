@@ -17,10 +17,10 @@ import java.util.List;
 public class TradeController {
     private final TradeFacade facade;
 
-    @PostMapping(path = "{userId}/{tickerId}")
-    public List<TradeDto> getTrades(@PathVariable Long userId, @PathVariable Long tickerId,
+    @PostMapping(path = "{userId}/{tickerCoinId}")
+    public List<TradeDto> getTrades(@PathVariable Long userId, @PathVariable String tickerCoinId,
                                     @RequestBody DigitalSignature signature) throws GeneralSecurityException {
-        return facade.getTrades(userId, tickerId, signature);
+        return facade.getTrades(userId, tickerCoinId, signature);
     }
 
     @PostMapping(path = "")

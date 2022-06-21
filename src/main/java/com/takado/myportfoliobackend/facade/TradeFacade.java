@@ -21,11 +21,11 @@ public class TradeFacade {
     private final RequestSignatureService signatureService;
     private final TradeMapper mapper;
 
-    public List<TradeDto> getTrades(Long userId, Long tickerId, DigitalSignature digitalSignature) throws GeneralSecurityException {
-        String receivedDataPath = apiPath + userId + tickerId;
+    public List<TradeDto> getTrades(Long userId, String tickerCoinId, DigitalSignature digitalSignature) throws GeneralSecurityException {
+        String receivedDataPath = apiPath + userId + "/" + tickerCoinId;
         String signedPath = digitalSignature.getMessage();
         if (signatureService.validateSignature(receivedDataPath, signedPath, digitalSignature)) {
-            var trades = dbService.getAllTradesByUserIdAndTickerId(userId, tickerId);
+            var trades = dbService.getAllTradesByUserIdAndTickerCoinId(userId, tickerCoinId);
             return mapper.mapToDto(trades);
         }
         return Collections.emptyList();
