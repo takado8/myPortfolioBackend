@@ -1,6 +1,5 @@
 package com.takado.myportfoliobackend.facade;
 
-import com.takado.myportfoliobackend.domain.AssetDto;
 import com.takado.myportfoliobackend.domain.DigitalSignature;
 import com.takado.myportfoliobackend.domain.TradeDto;
 import com.takado.myportfoliobackend.domain.requests.TradeBodyRequest;
@@ -22,7 +21,6 @@ public class TradeFacade {
     private final RequestSignatureService signatureService;
     private final TradeMapper mapper;
 
-
     public List<TradeDto> getTrades(Long userId, Long tickerId, DigitalSignature digitalSignature) throws GeneralSecurityException {
         String receivedDataPath = apiPath + userId + tickerId;
         String signedPath = digitalSignature.getMessage();
@@ -43,5 +41,4 @@ public class TradeFacade {
         }
         return new TradeDto(null, null, null, null, null, null, null);
     }
-
 }

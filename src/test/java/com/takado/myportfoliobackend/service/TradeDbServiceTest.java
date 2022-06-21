@@ -101,6 +101,46 @@ class TradeDbServiceTest {
     }
 
     @Test
+    void getAllTradesByUserIdAndTickerCoinId() {
+        //given
+        Ticker ticker1 = tickerDbService.getTicker(ticker1Id);
+        Ticker ticker2 = tickerDbService.getTicker(ticker2Id);
+
+        User user1 = userDbService.getUserByEmail(user1Email);
+        User user2 = userDbService.getUserByEmail(user2Email);
+
+        Trade trade1 = new Trade(1L, "100", "200", Trade.Type.ASK,
+                LocalDateTime.now(), ticker1, user1);
+        Trade trade2 = new Trade(2L, "100", "200", Trade.Type.ASK,
+                LocalDateTime.now(), ticker2, user2);
+        Trade trade3 = new Trade(3L, "100", "200", Trade.Type.ASK,
+                LocalDateTime.now(), ticker1, user2);
+        Trade trade4 = new Trade(4L, "100", "200", Trade.Type.ASK,
+                LocalDateTime.now(), ticker2, user1);
+        Trade trade5 = new Trade(5L, "150", "200", Trade.Type.ASK,
+                LocalDateTime.now(), ticker1, user1);
+
+        trade1 = dbService.saveTrade(trade1);
+        trade2 = dbService.saveTrade(trade2);
+        trade3 = dbService.saveTrade(trade3);
+        trade4 = dbService.saveTrade(trade4);
+        trade5 = dbService.saveTrade(trade5);
+        //when
+        var trades = dbService.getAllTradesByUserIdAndTickerCoinId(user1.getId(), ticker1.getCoinId());
+        //then
+        assertTrue(trades.contains(trade1));
+        assertTrue(trades.contains(trade5));
+        assertEquals(2, trades.size());
+
+        //cleanup
+        dbService.deleteTrade(trade1.getId());
+        dbService.deleteTrade(trade2.getId());
+        dbService.deleteTrade(trade3.getId());
+        dbService.deleteTrade(trade4.getId());
+        dbService.deleteTrade(trade5.getId());
+    }
+
+    @Test
     void saveTrade() {
         //given
         Ticker ticker = new Ticker(1L, "ETH", "ethereum",
