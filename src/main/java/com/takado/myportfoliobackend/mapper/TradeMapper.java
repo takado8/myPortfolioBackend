@@ -17,8 +17,8 @@ public class TradeMapper {
     private final TickerDbService tickerDbService;
 
     public TradeDto mapToDto(Trade trade) {
-        return new TradeDto(trade.getId(), trade.getAmount(), trade.getValueIn(), trade.getType(),
-                trade.getDateTime(), trade.getTicker().getId(), trade.getUser().getId());
+        return new TradeDto(trade.getId(), trade.getUser().getId(),trade.getTicker().getId(), trade.getAmount(),
+                trade.getValueIn(), trade.getType(),trade.getDateTime());
     }
 
     public Trade mapToTrade(TradeDto tradeDto) {
