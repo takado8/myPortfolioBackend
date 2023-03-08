@@ -31,7 +31,7 @@ public class Ticker {
             targetEntity = Asset.class,
             mappedBy = "ticker",
             cascade = CascadeType.MERGE,
-            fetch = FetchType.EAGER)
+            fetch = FetchType.LAZY)
     private List<Asset> assets;
 
     @OneToMany(

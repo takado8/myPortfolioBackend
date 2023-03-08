@@ -33,7 +33,7 @@ public class User {
             targetEntity = Asset.class,
             mappedBy = "user",
             cascade = CascadeType.MERGE,
-            fetch = FetchType.EAGER)
+            fetch = FetchType.LAZY)
     private List<Asset> assets;
 
     @OneToMany(
