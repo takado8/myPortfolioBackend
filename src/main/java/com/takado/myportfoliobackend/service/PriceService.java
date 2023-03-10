@@ -14,9 +14,16 @@ import java.util.Map;
 public class PriceService {
     private final CoinGeckoClient geckoClient;
     private final NbpClient nbpClient;
+    private final PriceCacheService cacheService;
 
     public Map<String, HashMap<String, BigDecimal>> getCoinsPrices(String vs_currency, String... coinsIds) {
-        return geckoClient.getCoinsPrices(vs_currency, coinsIds);
+        var cachedPrices = cacheService.getCoinsPrices(coinsIds);
+        if (cachedPrices != null) {
+            return cachedPrices;
+        }
+        var prices = geckoClient.getCoinsPrices(vs_currency, coinsIds);
+        cacheService.storeCoinsPrices(prices);
+        return prices;
     }
 
     public Map<String, String> ping() {
