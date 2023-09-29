@@ -3,10 +3,9 @@ Web crypto-assets portfolio - keep track of your crypto investments.
 
 Webiste demo is live - [check it out](https://kornelgut-cryptoportfolio.pl/)
 
-* Uses Google OAuth2 for authentication and account creation.
-* Uses https connection with ssl certificate
-* Uses digital signatures to secure endpoint calls.
-
+* Google OAuth2 for authentication and account creation.
+* Https connection with ssl certificate.
+* Digital signatures for secure endpoint calls.
 
 [Check out frontend](https://github.com/takado8/myPortfolioFront)
 
