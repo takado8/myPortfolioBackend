@@ -1,11 +1,15 @@
 # myPortfolioBackend
- Web crypto-assets portfolio - keep track of your crypto investments.
+Web crypto-assets portfolio - keep track of your crypto investments.
 
-* Uses OAuth2 with google account for authentication and user account creation.
+Webiste demo is live - [check it out](https://kornelgut-cryptoportfolio.pl/)
+
+* Uses Google OAuth2 for authentication and account creation.
+* Uses https connection with ssl certificate
 * Uses digital signatures to secure endpoint calls.
+
 
 [Check out frontend](https://github.com/takado8/myPortfolioFront)
 
-![myPortfolioFrontImg2](https://user-images.githubusercontent.com/39505866/140618945-6a4407b3-a30b-4cd2-a9f1-067da67f3804.jpg)
-
-![myPortfolioFrontImg](https://user-images.githubusercontent.com/39505866/140618956-eee7b914-c0b6-48f9-99dd-16dc5b6412ee.jpg)
+![portfoliofront1](https://github.com/takado8/myPortfolioBackend/assets/39505866/bd5121dd-98b9-45fe-a14a-e74d07725ac9)
+![portfoliofront2](https://github.com/takado8/myPortfolioBackend/assets/39505866/5950f332-7274-4708-8988-af05ac33d2d9)
+![portfoliofront3](https://github.com/takado8/myPortfolioBackend/assets/39505866/904b2d8e-b9d5-4981-aa1c-2d1d32c694a5)
